@@ -4,8 +4,15 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import './bootstrap';
-import { createApp } from 'vue';
+import { createApp } from "vue";
+import "./bootstrap";
+
+import VueToast from "vue-toast-notification";
+import "vue-toast-notification/dist/theme-sugar.css";
+
+Vue.use(VueToast, {
+    position: "top-right",
+});
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -15,8 +22,12 @@ import { createApp } from 'vue';
 
 const app = createApp({});
 
-import ExampleComponent from './components/ExampleComponent.vue';
-app.component('example-component', ExampleComponent);
+import ExampleComponent from "./components/ExampleComponent.vue";
+import StudentsIndexComponent from "./components/StudentsIndexComponent.vue";
+app.component("example-component", ExampleComponent);
+app.component("students-index-component", StudentsIndexComponent);
+
+Vue.component("pagination", require("laravel-vue-pagination"));
 
 /**
  * The following block of code may be used to automatically register your
@@ -36,4 +47,4 @@ app.component('example-component', ExampleComponent);
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
 
-app.mount('#app');
+app.mount("#app");
